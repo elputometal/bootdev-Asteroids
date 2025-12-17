@@ -1,2 +1,3 @@
 game_state.jsonl
 *.pyc
+game_events.jsonl

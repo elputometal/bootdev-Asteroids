@@ -1,4 +1,5 @@
-from logger import log_state
+import sys
+import logger
 import pygame
 import player
 import asteroid
@@ -26,7 +27,7 @@ def main():
     playerInstance = player.Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     
     while True:
-        log_state()
+        logger.log_state()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -41,6 +42,12 @@ def main():
         asteroids.update(dt)
         for element in drawable:
             element.draw(screen)
+
+        for asteroidElemnt in asteroids:
+            if(asteroidElemnt.collides_with(playerInstance) == True):
+                logger.log_event("player_hit")
+                print(f"Game over!")
+                sys.exit()
 
         pygame.display.flip()
 
