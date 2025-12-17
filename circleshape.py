@@ -23,7 +23,6 @@ class CircleShape(pygame.sprite.Sprite):
         
         return collisionDetected
 
-
     def draw(self, screen):
         # must override
         pass
