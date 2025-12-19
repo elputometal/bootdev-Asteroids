@@ -54,6 +54,13 @@ def main():
                 logger.log_event("player_hit")
                 print(f"Game over!")
                 sys.exit()
+            
+            for shotElemnt in shots:
+                if (asteroidElemnt.collides_with(shotElemnt) == True):
+                    logger.log_event("asteroid_shot")
+                    shotElemnt.kill()
+                    asteroidElemnt.split()
+                    break
 
         pygame.display.flip()
 
